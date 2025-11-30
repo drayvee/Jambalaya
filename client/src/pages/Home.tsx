@@ -49,9 +49,6 @@ export default function Home() {
   
     return () => document.removeEventListener("mousedown", playSound);
   }, []);
-  export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
