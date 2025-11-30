@@ -300,7 +300,8 @@ export default function Home() {
         <img
           src="/HumanAlastor.png"
           alt="Alastor Human"
-          className="absolute bottom-0 right-0 md:translate-x-0 w-[300px] md:w-[650px] max-w-full pointer-events-none select-none z-0"
+          className="absolute bottom-0 right-0 w-[500px] md:w-[650px] pointer-events-none select-none z-0"
+          style={{ marginRight: '-20px' }}
         />
       </section>
 
