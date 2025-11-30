@@ -29,7 +29,7 @@ export default function Home() {
         <div>
           <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
           <p className="text-lg">
-            Sorry! This site is optimized for desktop only. Please visit from a computer for the full experience.
+            This site is optimized for desktop only. Please visit from a computer for the full access.
           </p>
         </div>
       </div>
