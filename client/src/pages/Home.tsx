@@ -35,6 +35,20 @@ export default function Home() {
       </div>
     );
   }
+  useEffect(() => {
+    const clickSound = document.getElementById("click-sound") as HTMLAudioElement;
+  
+    const playSound = () => {
+      if (clickSound) {
+        clickSound.currentTime = 0; // restart the sound
+        clickSound.play();
+      }
+    };
+  
+    document.addEventListener("mousedown", playSound);
+  
+    return () => document.removeEventListener("mousedown", playSound);
+  }, []);
 
 
   const ingredients = [
