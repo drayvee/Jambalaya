@@ -123,7 +123,7 @@ export default function Home() {
           <div className="flex items-end gap-2">
             <img
               src="/favicon.png" 
-              alt="Chef Hat" 
+              alt="TopAl" 
               className="w-16 h-16"
             />
             <h1 className="text-2xl font-bold text-[#8B2E2E]">
@@ -238,15 +238,15 @@ export default function Home() {
         className="py-20 md:py-32 bg-white relative"
         data-scroll-animate
       >
-        <div className="container">
-          <div className="mb-16">
+        <div className="container relative z-10">
+          <div className="mb-16 -translate-x-15">
             <span className="accent-text text-lg">What You'll Need</span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#8B2E2E] mt-2">
               Ingredients
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 -translate-x-20">
             {ingredients.map((ingredient, index) => (
               <div
                 key={index}
@@ -267,6 +267,11 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <img
+          src="/HumanAlastor.png"
+          alt="Alastor Human"
+          className="absolute bottom-0 right-0 translate-x-45 w-[500px] md:w-[650px] pointer-events-none select-none z-0"
+        />
       </section>
 
       {/* Instructions Section */}
