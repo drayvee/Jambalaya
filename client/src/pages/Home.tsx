@@ -3,11 +3,10 @@ import { Clock, Users, Flame, ChefHat } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false); // <-- new
+  const [isMobile, setIsMobile] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
-  // Detect mobile users
   useEffect(() => {
     const checkMobile = () => {
       const ua = navigator.userAgent;
@@ -29,26 +28,12 @@ export default function Home() {
         <div>
           <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
           <p className="text-lg">
-            This site is optimized for desktop only. Please visit from a computer for the full access.
+            Sorry! This site is optimized for desktop only. Please visit from a computer for the full experience.
           </p>
         </div>
       </div>
     );
   }
-  useEffect(() => {
-    const clickSound = document.getElementById("click-sound") as HTMLAudioElement;
-  
-    const playSound = () => {
-      if (clickSound) {
-        clickSound.currentTime = 0; // restart the sound
-        clickSound.play();
-      }
-    };
-  
-    document.addEventListener("mousedown", playSound);
-  
-    return () => document.removeEventListener("mousedown", playSound);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -73,6 +58,21 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const clickSound = document.getElementById("click-sound") as HTMLAudioElement;
+  
+    const playSound = () => {
+      if (clickSound) {
+        clickSound.currentTime = 0; // restart the sound
+        clickSound.play();
+      }
+    };
+  
+    document.addEventListener("mousedown", playSound);
+  
+    return () => document.removeEventListener("mousedown", playSound);
   }, []);
 
 
