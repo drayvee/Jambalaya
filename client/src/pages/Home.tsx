@@ -3,10 +3,11 @@ import { Clock, Users, Flame, ChefHat } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // <-- new
   const [scrollY, setScrollY] = useState(0);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
+  // Detect mobile users
   useEffect(() => {
     const checkMobile = () => {
       const ua = navigator.userAgent;
@@ -14,68 +15,26 @@ export default function Home() {
       const smallScreen = window.innerWidth < 768;
       setIsMobile(mobile || smallScreen);
     };
-    checkMobile();
+
+    checkMobile(); // run on load
     window.addEventListener("resize", checkMobile);
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
+  // If mobile, show desktop-only message
+  if (isMobile) {
+    return (
+      <div className="flex items-center justify-center min-h-screen text-center p-4 bg-[#8B2E2E] text-white">
+        <div>
+          <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
+          <p className="text-lg">
+            Sorry! This site is optimized for desktop only. Please visit from a computer for the full experience.
+          </p>
+        </div>
+      </div>
     );
-
-    document.querySelectorAll("[data-scroll-animate]").forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const clickSound = document.getElementById("click-sound") as HTMLAudioElement;
-  
-    const playSound = () => {
-      if (clickSound) {
-        clickSound.currentTime = 0; // restart the sound
-        clickSound.play();
-      }
-    };
-  
-    document.addEventListener("mousedown", playSound);
-  
-    return () => document.removeEventListener("mousedown", playSound);
-  }, []);
-
-  return (
-    <>
-      {isMobile ? (
-        <div className="flex items-center justify-center min-h-screen text-center p-4 bg-[#8B2E2E] text-white">
-          <div>
-            <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
-            <p className="text-lg">This site is optimized for desktop only. Please visit from a computer for the full access.</p>
-          </div>
-        </div>
-      ) : (
-        <div className="min-h-screen">
-          {/* Desktop version JSX here */}
-        </div>
-      )}
-    </>
-  );
-}
+  }
 
 
   const ingredients = [
