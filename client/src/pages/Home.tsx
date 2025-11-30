@@ -265,7 +265,7 @@ export default function Home() {
       {/* Ingredients Section */}
       <section
         id="ingredients"
-        className="py-20 md:py-32 bg-white relative"
+        className="py-20 md:py-32 bg-white relative overflow-hidden"
         data-scroll-animate
       >
         <div className="container relative z-10">
@@ -300,8 +300,7 @@ export default function Home() {
         <img
           src="/HumanAlastor.png"
           alt="Alastor Human"
-          className="absolute bottom-0 right-0 w-[500px] md:w-[650px] pointer-events-none select-none z-0"
-          style={{ marginRight: '-20px' }}
+          className="absolute bottom-0 right-0 translate-x-45 w-[500px] md:w-[650px] pointer-events-none select-none z-0"
         />
       </section>
 
