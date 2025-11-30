@@ -14,10 +14,8 @@ export default function Home() {
       const smallScreen = window.innerWidth < 768;
       setIsMobile(mobile || smallScreen);
     };
-
-    checkMobile(); // run on load
+    checkMobile();
     window.addEventListener("resize", checkMobile);
-
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -74,6 +72,24 @@ export default function Home() {
   
     return () => document.removeEventListener("mousedown", playSound);
   }, []);
+
+  return (
+    <>
+      {isMobile ? (
+        <div className="flex items-center justify-center min-h-screen text-center p-4 bg-[#8B2E2E] text-white">
+          <div>
+            <h1 className="text-3xl font-bold mb-4">Uh-oh!</h1>
+            <p className="text-lg">Come back on a desktop to get full access.</p>
+          </div>
+        </div>
+      ) : (
+        <div className="min-h-screen">
+          {/* Desktop version JSX here */}
+        </div>
+      )}
+    </>
+  );
+}
 
 
   const ingredients = [
