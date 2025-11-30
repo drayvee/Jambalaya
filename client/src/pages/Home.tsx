@@ -19,20 +19,6 @@ export default function Home() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // If mobile, show desktop-only message
-  if (isMobile) {
-    return (
-      <div className="flex items-center justify-center min-h-screen text-center p-4 bg-[#8B2E2E] text-white">
-        <div>
-          <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
-          <p className="text-lg">
-            Sorry! This site is optimized for desktop only. Please visit from a computer for the full experience.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
@@ -78,8 +64,8 @@ export default function Home() {
       {isMobile ? (
         <div className="flex items-center justify-center min-h-screen text-center p-4 bg-[#8B2E2E] text-white">
           <div>
-            <h1 className="text-3xl font-bold mb-4">Uh-oh!</h1>
-            <p className="text-lg">Come back on a desktop to get full access.</p>
+            <h1 className="text-3xl font-bold mb-4">Desktop Only</h1>
+            <p className="text-lg">This site is optimized for desktop only. Please visit from a computer for the full access.</p>
           </div>
         </div>
       ) : (
